@@ -1,0 +1,124 @@
+.home {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 16px;
+    height: 100%;
+}
+
+.list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.box_description {
+    background: rgba(248,244,255, .25);
+    align-self: center;
+    height: max-content;
+    box-sizing: border-box;
+    width: 350px;
+    border-color: rgba(0, 0, 0, .65);
+    border-style: solid;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.description {
+    font-size: 24px;
+    line-height: 120%;
+    text-align: justify;
+    margin: 20px;
+}
+
+.container_upload {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 60px;
+}
+
+.box_selectFile {
+    display: flex;
+    height: 50px;
+    width: 350px;
+    background: rgba(248,244,255, .25);
+    border-color: rgba(0, 0, 0, .65);
+    border-style: solid;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    transition: color 0.2s ease;
+}
+
+.box_selectFile:hover {
+    color: gray;
+}
+
+.selectFile {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 24px;
+    line-height: 120%;
+    text-align: justify;
+    margin: 0;
+}
+
+.fileDropZone {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 30px;
+    height: 350px;
+    width: 700px;
+    padding: 2px;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='20' ry='20' stroke='%2300000054' stroke-width='5' stroke-dasharray='12%2c20' stroke-dashoffset='20' stroke-linecap='square'/%3e%3c/svg%3e");
+    border-radius: 20px;
+}
+
+.textDropZone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    line-height: 120%;
+    text-align: justify;
+}
+
+.dragActive {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.6);
+}
+
+.uploadFile {
+    display: flex;
+    height: 50px;
+    width: 350px;
+    background: rgba(248,244,255, .25);
+    border-color: rgba(0, 0, 0, .65);
+    border-style: solid;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    transition: color 0.2s ease;
+}
+
+.uploadFileActive:hover {
+    color: gray;
+}
+
+.selectFileButton {
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 24px;
+    line-height: 120%;
+    text-align: justify;
+    margin: 0;
+}

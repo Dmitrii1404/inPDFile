@@ -1,0 +1,65 @@
+.header {
+    background: rgba(248,244,255, .25);
+    width: 100%;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .1);
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.logoContainer {
+    height: 100px;
+    box-sizing: border-box;
+    padding: 10px 50px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+}
+
+.logo {
+    height: 100%;
+}
+
+.naiming {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.title {
+    font-size: 42px;
+    line-height: 100%;
+    margin: 0;
+}
+
+.description {
+    font-size: 24px;
+    line-height: 100%;
+    margin: 0;
+}
+
+.navigation {
+    display: flex;
+}
+
+.nav__list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    column-gap: 50px;
+    margin: auto 50px;
+}
+
+.nav__item {
+    font-size: 24px;
+    text-decoration: none;
+    color: black;
+    transition: color 0.2s ease;
+}
+
+.nav__item:hover {
+    color: gray;
+}
