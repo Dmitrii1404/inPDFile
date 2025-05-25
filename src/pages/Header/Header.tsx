@@ -27,23 +27,23 @@ function Header () {
                 <Logo className={styles.logo} />
             </Link>
             <div className={styles.naiming}>
-                <h1>inPDFile</h1>
-                <p>мгновенное определение типа документа</p>
+                <h1 className={styles.title}>inPDFile</h1>
+                <p className={styles.description}>мгновенное определение типа документа</p>
             </div>
         </div>
         <nav className={styles.navigation}>
             <ul className={styles.nav__list}>
-                <li>
-                    <Link to="/" className={styles.nav__item}>Главная</Link>
+                <li className={styles.nav__item}>
+                    <Link to="/" className={styles.link}>Главная</Link>
                 </li>
-                <li>
-                    <Link to="/history" className={styles.nav__item}>История загрузок</Link>
+                <li className={styles.nav__item}>
+                    <Link to="/history" className={styles.link}>История</Link>
                 </li>
-                <li>
+                <li className={styles.nav__item}>
                     {login ? (
-                        <Link to="/profile" className={styles.nav__item}>{ login }</Link>
+                        <Link to="/profile" className={styles.link}>{ login }</Link>
                     ) : (
-                        <Link to="/authPage" className={styles.nav__item}>Войти</Link>
+                        <Link to="/authPage" className={styles.link}>Войти</Link>
                     )}
                 </li>
             </ul>

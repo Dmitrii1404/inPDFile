@@ -1,7 +1,7 @@
 .home {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: 16px;
+    gap: 20px;
     height: 100%;
 }
 
@@ -10,6 +10,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    margin-left: 20px;
 }
 
 .box_description {
@@ -31,7 +32,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    row-gap: 60px;
+    row-gap: 80px;
+    margin: 0 40px;
 }
 
 .box_selectFile {
@@ -68,7 +70,8 @@
     justify-content: center;
     row-gap: 30px;
     height: 350px;
-    width: 700px;
+    width: 100%;
+    max-width: 700px;
     padding: 2px;
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='20' ry='20' stroke='%2300000054' stroke-width='5' stroke-dasharray='12%2c20' stroke-dashoffset='20' stroke-linecap='square'/%3e%3c/svg%3e");
     border-radius: 20px;
@@ -115,4 +118,23 @@
     line-height: 120%;
     text-align: justify;
     margin: 0;
+}
+
+@media (max-width: 767px) {
+    .home {
+        grid-template-columns: 1fr;
+        row-gap: 60px;
+    }
+    .list {
+        margin: 40px;
+    }
+    .box_description{
+        margin: 20px;
+        width: 100%;
+    }
+    .container_upload {
+        justify-content: start;
+        row-gap: 20px;
+        padding-bottom: 40px;
+    }
 }

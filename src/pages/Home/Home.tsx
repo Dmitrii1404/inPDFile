@@ -45,7 +45,7 @@ function Home () {
             toast.error('Ошибка загрузки');
             console.error(e);
         }).finally(() => {
-            NProgress.done;
+            NProgress.done();
             setLoading(false);
         })
     };
