@@ -1,0 +1,6 @@
+.auth_box {
+    display: flex;
+    height: 100%;
+    justify-self: center;
+    align-items: center;
+}

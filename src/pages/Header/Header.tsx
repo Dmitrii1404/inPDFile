@@ -27,8 +27,8 @@ function Header () {
                 <Logo className={styles.logo} />
             </Link>
             <div className={styles.naiming}>
-                <h1 className={styles.title}>inPDFile</h1>
-                <p className={styles.description}>мгновенное определение типа документа</p>
+                <h1>inPDFile</h1>
+                <p>мгновенное определение типа документа</p>
             </div>
         </div>
         <nav className={styles.navigation}>

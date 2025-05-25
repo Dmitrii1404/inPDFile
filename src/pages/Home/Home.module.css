@@ -22,13 +22,7 @@
     border-style: solid;
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-}
-
-.description {
-    font-size: 24px;
-    line-height: 120%;
-    text-align: justify;
-    margin: 20px;
+    padding: 20px;
 }
 
 .container_upload {

@@ -2,7 +2,7 @@ import {createContext, useState} from 'react';
 
 interface UserContextValue {
     login: string | undefined;
-    addLogin: (text: string) => void;
+    addLogin: (text: string | undefined) => void;
 }
 
 const initialValue: UserContextValue = {

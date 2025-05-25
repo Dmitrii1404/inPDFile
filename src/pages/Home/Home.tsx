@@ -3,6 +3,7 @@ import {useState} from "react";
 import {toast} from "react-toastify";
 import NProgress from 'nprogress';
 import axios from "axios";
+import Button from "../../components/UI/Button/Button.tsx";
 
 function Home () {
     const [file, setFile] = useState<File | null>(null);
@@ -71,19 +72,14 @@ function Home () {
         dragActive ? styles.dragActive : null
     ].filter(Boolean).join(' ');
 
-    const classUploadFile = [
-        styles.uploadFile,
-        !file || loading ? styles.uploadFileActive : null
-        ].filter(Boolean).join(' ');
-
     return (
         <main className={styles.home}>
             <div className={styles.list}>
                 <div className={styles.box_description}>
-                    <p className={styles.description}>Документы окружают нас повсюду - договоры, чеки, соглашения. Важно быстро определить их тип, будь то в работе или повседневной жизни.</p>
+                    <p>Документы окружают нас повсюду - договоры, чеки, соглашения. Важно быстро определить их тип, будь то в работе или повседневной жизни.</p>
                 </div>
                 <div className={styles.box_description}>
-                    <p className={styles.description}>Наш сервис бесплатно определяет тип документа в PDF-файле за секунды. Просто загрузите файл - и получите результат без лишних усилий</p>
+                    <p>Наш сервис бесплатно определяет тип документа в PDF-файле за секунды. Просто загрузите файл - и получите результат без лишних усилий</p>
                 </div>
             </div>
             <div className={styles.container_upload}>
@@ -112,9 +108,9 @@ function Home () {
                     )}
                 </div>
 
-                <button className={classUploadFile} onClick={handleFileUpload} disabled={!file || loading}>
-                    <p className={styles.selectFile}>{loading ? 'Загрузка...': 'Загрузить файл'}</p>
-                </button>
+                <Button onClick={handleFileUpload} disabled={!file || loading}>
+                    {loading ? 'Загрузка...': 'Загрузить файл'}
+                </Button>
             </div>
         </main>
     )

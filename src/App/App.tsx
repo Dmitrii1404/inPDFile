@@ -4,9 +4,11 @@ import {UserProvider} from "../context/UserContext.tsx";
 import styles from './App.module.css';
 import 'nprogress/nprogress.css';
 
-import ToastContainerCustom from "../components/toast/ToastContainer.tsx";
-import Header from '../components/Header/Header.tsx';
+import ToastContainerCustom from "../components/UI/toast/ToastContainer.tsx";
+import Header from '../pages/Header/Header.tsx';
 import Home from '../pages/Home/Home.tsx';
+import Profile from "../pages/Profile/Profile.tsx";
+import AuthPage from "../pages/AuthPage/AuthPage.tsx";
 
 function App() {
 
@@ -18,6 +20,8 @@ function App() {
           <div className={styles.main}>
               <Routes>
                   <Route path="/" element={<Home />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/authPage" element={<AuthPage />} />
               </Routes>
           </div>
           <ToastContainerCustom />

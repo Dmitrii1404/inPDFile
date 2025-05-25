@@ -1,0 +1,25 @@
+.button {
+    display: flex;
+    height: 50px;
+    width: 350px;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    line-height: 120%;
+    text-align: justify;
+    background: rgba(248,244,255, .25);
+    border-color: rgba(0, 0, 0, .65);
+    border-style: solid;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    transition: color 0.2s ease;
+}
+
+.button:hover:not(.disabled) {
+    color: gray;
+}
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
