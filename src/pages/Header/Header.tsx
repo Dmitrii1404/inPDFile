@@ -41,7 +41,7 @@ function Header () {
                 </li>
                 <li className={styles.nav__item}>
                     {login ? (
-                        <Link to="/profile" className={styles.link}>{ login }</Link>
+                        <Link to="/profile" className={styles.link}>Профиль</Link>
                     ) : (
                         <Link to="/authPage" className={styles.link}>Войти</Link>
                     )}

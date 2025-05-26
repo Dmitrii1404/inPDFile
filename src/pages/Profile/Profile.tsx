@@ -12,11 +12,11 @@ function Profile () {
     const userContext = useContext(UserContext);
     const { login, addLogin } = userContext;
 
-    // useEffect(() => {
-    //     if (!login) {
-    //         navigate("/authPage");
-    //     }
-    // });
+    useEffect(() => {
+        if (!login) {
+            navigate("/authPage");
+        }
+    });
 
     const handleLogout = () => {
         axios.post('http://localhost:8000/auth/logout', {}, {

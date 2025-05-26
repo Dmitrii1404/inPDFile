@@ -10,6 +10,7 @@ import Home from '../pages/Home/Home.tsx';
 import Profile from "../pages/Profile/Profile.tsx";
 import AuthPage from "../pages/AuthPage/AuthPage.tsx";
 import DeleteAccount from "../pages/DeleteAccount/DeleteAccount.tsx";
+import ConfirmCode from "../pages/ConfirmCode/ConfirmCode.tsx";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/authPage" element={<AuthPage />} />
                   <Route path="/deleteAccount" element={<DeleteAccount />} />
+                  <Route path="/confirmCode" element={<ConfirmCode />} />
               </Routes>
           </div>
           <ToastContainerCustom />

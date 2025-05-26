@@ -11,11 +11,11 @@ function DeleteAccount () {
     const userContext = useContext(UserContext);
     const { login, addLogin } = userContext;
 
-    // useEffect(() => {
-    //     if (!login) {
-    //         navigate("/authPage");
-    //     }
-    // });
+    useEffect(() => {
+        if (!login) {
+            navigate("/authPage");
+        }
+    });
 
     const handleDelete = async () => {
         await axios.delete('http://localhost:8000/auth/delete', {
