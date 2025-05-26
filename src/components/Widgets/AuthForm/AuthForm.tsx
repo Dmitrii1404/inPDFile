@@ -22,11 +22,10 @@ function AuthForm ({ isLogin, onSubmit, onToggleMode } : AuthFormProps) {
         if (!value) {
             return 'Логин обязателен';
         }
-        if (value.length < 4 || value.length > 20) {
-            return 'Логин должен содержать от 4 до 20 символов';
-        }
-        if (/[\s\W]/.test(value)) {
-            return 'Логин не должен содержать пробелы и специальные символы';
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+            return 'Неверный формат email';
         }
         return undefined;
     };
