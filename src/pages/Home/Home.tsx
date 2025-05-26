@@ -4,6 +4,8 @@ import {toast} from "react-toastify";
 import NProgress from 'nprogress';
 import axios from "axios";
 import Button from "../../components/UI/Button/Button.tsx";
+// @ts-ignore
+import Cross from "../../assets/Cross.svg?react";
 
 function Home () {
     const [file, setFile] = useState<File | null>(null);
@@ -67,6 +69,10 @@ function Home () {
         }
     };
 
+    const handleDeleteFile = ()=> {
+        setFile(null);
+    };
+
     const classFileDropZone = [
         styles.fileDropZone,
         dragActive ? styles.dragActive : null
@@ -76,10 +82,10 @@ function Home () {
         <main className={styles.home}>
             <div className={styles.list}>
                 <div className={styles.box_description}>
-                    <p>Документы окружают нас повсюду - договоры, чеки, соглашения. Важно быстро определить их тип, будь то в работе или повседневной жизни.</p>
+                    <p className={styles.description}>Документы окружают нас повсюду - договоры, чеки, соглашения. Важно быстро определить их тип, будь то в работе или повседневной жизни.</p>
                 </div>
                 <div className={styles.box_description}>
-                    <p>Наш сервис бесплатно определяет тип документа в PDF-файле за секунды. Просто загрузите файл - и получите результат без лишних усилий</p>
+                    <p className={styles.description}>Наш сервис бесплатно определяет тип документа в PDF-файле за секунды. Просто загрузите файл - и получите результат без лишних усилий</p>
                 </div>
             </div>
             <div className={styles.container_upload}>
@@ -102,11 +108,23 @@ function Home () {
                     onDrop={handleDrop}
                 >
                     {file ? (
-                        <p className={styles.textDropZone}>Выбран файл: {file.name}</p>
+                        <div className={styles.currentFile}>
+                            <p className={styles.textDropZone}>Выбран файл: {file.name}</p>
+                            <button onClick={handleDeleteFile} className={styles.crossButton}><Cross className={styles.cross}/></button>
+                        </div>
                     ) : (
                         <p className={styles.textDropZone}>Перетащите сюда ваши файлы</p>
                     )}
                 </div>
+
+                {file && (
+                    <div className={`${styles.box_description} ${styles.file}`}>
+                        <div className={styles.currentFile}>
+                            <p className={styles.description}>Выбран файл: {file.name}</p>
+                            <button onClick={handleDeleteFile} className={styles.crossButton}><Cross className={styles.cross}/></button>
+                        </div>
+                    </div>
+                )}
 
                 <Button onClick={handleFileUpload} disabled={!file || loading}>
                     {loading ? 'Загрузка...': 'Загрузить файл'}

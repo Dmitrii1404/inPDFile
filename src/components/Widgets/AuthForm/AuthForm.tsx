@@ -143,10 +143,17 @@ function AuthForm ({ isLogin, onSubmit, onToggleMode } : AuthFormProps) {
 
     return (
         <div className={styles.auth}>
-            <h1>{isLogin ? 'Вход' : 'Регистрация'}</h1>
+            <h1 className={styles.title}>{isLogin ? 'Вход' : 'Регистрация'}</h1>
             <form className={styles.auth_form} onSubmit={handleSubmit} noValidate>
                 <div className={styles.input_box}>
-                    <div>
+                    <div className={`${styles.field} ${
+                        !errors.user && user
+                            ? styles.labelActive
+                            : errors.user && !isLogin
+                                ? styles.errorActive
+                                : ''
+                    }`}>
+                        <p className={styles.label}>Логин:</p>
                         <input
                             className={`${styles.input} ${errors.user ? styles.input_error : ''}`}
                             type="text"
@@ -157,11 +164,16 @@ function AuthForm ({ isLogin, onSubmit, onToggleMode } : AuthFormProps) {
                             onBlur={handleUserBlur}
                             required
                         />
-                        {errors.user && !isLogin && (
-                            <span className={styles.error_message}>{errors.user}</span>
-                        )}
+                        <span className={styles.error_message}>{errors.user}</span>
                     </div>
-                    <div>
+                    <div className={`${styles.field} ${
+                        !errors.password && password
+                            ? styles.labelActive
+                            : errors.password && !isLogin
+                                ? styles.errorActive
+                                : ''
+                    }`}>
+                        <p className={styles.label}>Пароль:</p>
                         <input
                             className={`${styles.input} ${errors.password ? styles.input_error : ''}`}
                             type="password"
@@ -172,14 +184,13 @@ function AuthForm ({ isLogin, onSubmit, onToggleMode } : AuthFormProps) {
                             onBlur={handlePasswordBlur}
                             required
                         />
-                        {errors.password && !isLogin && (
-                            <span className={styles.error_message}>{errors.password}</span>
-                        )}
+                        <span className={styles.error_message}>{errors.password}</span>
 
-                        {!isLogin && password && (
-                            <PassIndicator strength={passwordStrength} />
-                        )}
+
                     </div>
+                    {!isLogin && password && (
+                        <PassIndicator strength={passwordStrength} />
+                    )}
                 </div>
                 <button type="submit" className={styles.submitButton} disabled={isFormReady()}>
                     {isLogin ? 'Войти' : 'Зарегистрироваться'}
