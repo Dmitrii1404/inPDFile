@@ -31,8 +31,8 @@
     text-decoration: none;
 }
 
-.userName {
-    color:  #003153;
+.title {
+    text-align: center;
 }
 
 @media (max-width: 1023px) and (min-width: 768px){

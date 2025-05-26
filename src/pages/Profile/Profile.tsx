@@ -12,11 +12,11 @@ function Profile () {
     const userContext = useContext(UserContext);
     const { login, addLogin } = userContext;
 
-    useEffect(() => {
-        if (!login) {
-            navigate("/authPage");
-        }
-    });
+    // useEffect(() => {
+    //     if (!login) {
+    //         navigate("/authPage");
+    //     }
+    // });
 
     const handleLogout = () => {
         axios.post('http://localhost:8000/auth/logout', {}, {
@@ -32,14 +32,14 @@ function Profile () {
     return (
         <div className={styles.profile_box}>
             <div className={styles.profile}>
-                <h1>Личный кабинет</h1>
-                <p>Добро пожаловать, {login}</p>
+                <h1 className={styles.title}>Личный кабинет</h1>
+                <p className={styles.text}>Добро пожаловать<br/><span className={styles.userName}>{login}</span></p>
                 <div className={styles.link_box}>
                     <Link to="/authPage" className={styles.link}>
-                        <Button onClick={handleLogout}>Выйти</Button>
+                        <Button onClick={handleLogout}><p className={styles.text}>Выйти</p></Button>
                     </Link>
                     <Link to="/deleteAccount" className={styles.link}>
-                        <Button>Удалить аккаунт</Button>
+                        <Button><p className={styles.text}>Удалить аккаунт</p></Button>
                     </Link>
                 </div>
 

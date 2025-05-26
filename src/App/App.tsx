@@ -9,6 +9,7 @@ import Header from '../pages/Header/Header.tsx';
 import Home from '../pages/Home/Home.tsx';
 import Profile from "../pages/Profile/Profile.tsx";
 import AuthPage from "../pages/AuthPage/AuthPage.tsx";
+import DeleteAccount from "../pages/DeleteAccount/DeleteAccount.tsx";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/authPage" element={<AuthPage />} />
+                  <Route path="/deleteAccount" element={<DeleteAccount />} />
               </Routes>
           </div>
           <ToastContainerCustom />
