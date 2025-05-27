@@ -1,0 +1,80 @@
+.profile_box {
+    display: flex;
+    height: 100%;
+    justify-self: center;
+    align-items: center;
+    align-self: center;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 350px;
+    width: 800px;
+    background: rgba(248,244,255, .25);
+    border-color: rgba(150,0,24, .8);
+    border-style: solid;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.deleteAccButton{
+    background: rgba(150,0,24, 0.3);
+    color: rgba(150,0,24, 1);
+}
+
+.link_box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.title {
+    text-align: center;
+}
+
+@media (max-width: 1023px) and (min-width: 768px){
+    .profile {
+        width: 600px;
+    }
+    .link_box {
+        flex-direction: column;
+        row-gap: 20px;
+    }
+}
+@media (max-width: 767px) and (min-width: 480px) {
+    .profile {
+        width: 400px;
+    }
+    .link_box {
+        flex-direction: column;
+        row-gap: 20px;
+    }
+    .title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 479px) {
+    .profile {
+        width: 250px;
+    }
+    .link_box {
+        flex-direction: column;
+        row-gap: 20px;
+    }
+    .title {
+        font-size: 24px;
+    }
+    .text {
+        font-size: 18px;
+    }
+}

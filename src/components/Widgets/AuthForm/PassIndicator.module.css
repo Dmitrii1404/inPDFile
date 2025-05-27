@@ -1,0 +1,54 @@
+.strength_container {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.strength_bars {
+    display: flex;
+    gap: 0.25rem;
+    height: 4px;
+}
+
+.strength_bar {
+    flex: 1;
+    height: 100%;
+    border-radius: 2px;
+    transition: background-color 0.3s ease;
+}
+
+.strength_bar_inactive {
+    background-color: #e0e0e0;
+}
+
+.strength_bar_red {
+    background-color: #dc3545;
+}
+
+.strength_bar_orange {
+    background-color: #fd7e14;
+}
+
+.strength_bar_green {
+    background-color: #28a745;
+}
+
+.strength_text {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-align: right;
+    transition: color 0.3s ease;
+}
+
+.strength_text_red {
+    color: #dc3545;
+}
+
+.strength_text_orange {
+    color: #fd7e14;
+}
+
+.strength_text_green {
+    color: #28a745;
+}
