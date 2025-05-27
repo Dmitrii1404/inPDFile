@@ -1,21 +1,43 @@
 import styles from './Home.module.css';
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {toast} from "react-toastify";
 import NProgress from 'nprogress';
 import axios from "axios";
 import Button from "../../components/UI/Button/Button.tsx";
 // @ts-ignore
 import Cross from "../../assets/Cross.svg?react";
+import {UserContext} from "../../context/UserContext.tsx";
 
 function Home () {
     const [file, setFile] = useState<File | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
     const [dragActive, setDragActive] = useState<boolean>(false);
+    const userContext = useContext(UserContext);
+    const { login } = userContext;
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.files && event.target.files.length > 0) {
-            setFile(event.target.files[0]);
+        if (!login) {
+            toast.error('Войдите в аккаунт');
+            event.target.value = '';
+            return;
         }
+
+        const chosen = event.target.files?.[0];
+        if (!chosen) return;
+
+        if (chosen.type !== 'application/pdf' && !chosen.name.toLowerCase().endsWith('.pdf')) {
+            toast.error('Неверный формат файла — нужен PDF');
+            event.target.value = '';
+            return;
+        }
+
+        if (chosen.size === 0) {
+            toast.error('Файл пустой');
+            event.target.value = '';
+            return;
+        }
+
+        setFile(chosen);
     };
 
     const handleFileUpload= async () => {
@@ -64,9 +86,24 @@ function Home () {
     const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
         event.preventDefault();
         setDragActive(false);
-        if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
-            setFile(event.dataTransfer.files[0]);
+        if (!login) {
+            toast.error('Войдите в аккаунт');
+            return;
         }
+        const dropped = event.dataTransfer.files?.[0];
+        if (!dropped) return;
+
+        if (dropped.type !== 'application/pdf' && !dropped.name.toLowerCase().endsWith('.pdf')) {
+            toast.error('Неверный формат файла — нужен PDF');
+            return;
+        }
+
+        if (dropped.size === 0) {
+            toast.error('Файл пустой');
+            return;
+        }
+
+        setFile(dropped);
     };
 
     const handleDeleteFile = ()=> {
