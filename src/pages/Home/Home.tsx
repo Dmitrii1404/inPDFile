@@ -14,7 +14,6 @@ function Home () {
     const [file, setFile] = useState<File | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
     const [dragActive, setDragActive] = useState<boolean>(false);
-    const [resultImage, setResultImage] = useState<string | null>(null);
     const userContext = useContext(UserContext);
     const { login } = userContext;
     const navigate = useNavigate();
@@ -66,9 +65,8 @@ function Home () {
             responseType: 'blob',
         }).then(response => {
             const blob = response.data as Blob;
-            const url = URL.createObjectURL(blob);
-            setResultImage(url);
-            navigate('/result', { state: { url } });
+            const imageUrl = URL.createObjectURL(blob);
+            navigate('/result', { state: { imageUrl } });
             toast.success('Файл загружен');
         }).catch (e => {
             setFile(null);
@@ -114,7 +112,6 @@ function Home () {
 
     const handleDeleteFile = ()=> {
         setFile(null);
-        setResultImage(null);
     };
 
     const classFileDropZone = [
