@@ -44,12 +44,17 @@
     border-color: rgba(0, 0, 0, .65);
     border-style: solid;
     border-radius: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-    transition: color 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition:
+            box-shadow 0.2s ease,
+            transform 0.2s ease,
+            color 0.2s ease;
 }
 
 .box_selectFile:hover {
     color: gray;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
 }
 
 .selectFile {

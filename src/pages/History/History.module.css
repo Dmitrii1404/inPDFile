@@ -18,28 +18,26 @@
     max-width: 1350px;
     height: 70vh;
     overflow-y: auto;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 10px;
     padding: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .fileList {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: 16px;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
 .fileItem {
-    border: 1px solid #eee;
+    background: rgba(248,244,255, .25);
+    border: 1px solid rgba(0, 0, 0, .65);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     padding: 12px;
-}
-
-.fileItem:last-child {
-    border-bottom: none;
 }
 
 .size {
@@ -80,6 +78,8 @@
 @media (max-width: 1023px) and (min-width: 768px) {
     .scrollContainer {
         max-width: 450px;
+        height: max-content;
+        border: none;
     }
     .fileList {
         grid-template-columns: repeat(1, 1fr);
@@ -89,6 +89,8 @@
 @media (max-width: 767px) and (min-width: 480px) {
     .scrollContainer {
         max-width: 350px;
+        height: max-content;
+        border: none;
     }
     .fileList {
         grid-template-columns: repeat(1, 1fr);
@@ -100,18 +102,24 @@
 
 @media (max-width: 479px) {
     .historyWrapper{
-        padding: 18px 0 0 0;
+        padding: 20px 10px 0 10px;
     }
     .scrollContainer {
         max-width: 250px;
+        height: max-content;
+        border: none;
     }
     .fileList {
         grid-template-columns: repeat(1, 1fr);
     }
     .title {
+        font-size: 24px;
+        text-align: center;
+    }
+    .noFilesText {
         font-size: 18px;
     }
     .infoText {
-        font-size: 14px;
+        font-size: 18px;
     }
 }

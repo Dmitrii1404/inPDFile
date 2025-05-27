@@ -1,5 +1,6 @@
 import styles from "./Footer.module.css";
 
+// @ts-ignore
 import Copyright from "../../assets/Copyright.svg?react";
 
 function Footer () {

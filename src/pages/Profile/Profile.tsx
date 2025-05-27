@@ -39,7 +39,7 @@ function Profile () {
                         <Button onClick={handleLogout}><p className={styles.text}>Выйти</p></Button>
                     </Link>
                     <Link to="/deleteAccount" className={styles.link}>
-                        <Button><p className={styles.text}>Удалить аккаунт</p></Button>
+                        <Button className={styles.deleteAccButton}><p className={styles.text}>Удалить аккаунт</p></Button>
                     </Link>
                 </div>
 

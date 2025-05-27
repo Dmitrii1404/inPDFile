@@ -4,6 +4,9 @@
     background: rgba(248,244,255, .25);
     backdrop-filter: blur(10px);
     box-shadow: 0 -4px 10px rgba(0, 0, 0, .1);
+    background: linear-gradient(-45deg, #6495ED, #80DAEB);
+    background-size: 200% 200%;
+    background-position: 20% 70%;
 }
 
 .description_box {
@@ -20,6 +23,7 @@
 .description {
     font-size: 18px;
     text-align: justify;
+    margin: auto 0;
 }
 
 .copyright_box{
@@ -50,5 +54,8 @@
 @media (max-width: 479px) {
     .footer {
         grid-template-columns: 1fr;
+    }
+    .contacts_list {
+        padding: 0 0 0 20px;
     }
 }

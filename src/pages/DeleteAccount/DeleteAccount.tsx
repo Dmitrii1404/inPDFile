@@ -41,7 +41,7 @@ function DeleteAccount () {
                     <Button><p className={styles.text}>Назад</p></Button>
                 </Link>
                 <Link to="/" className={styles.link}>
-                    <Button onClick={handleDelete}><p className={styles.text}>Удалить аккаунт</p></Button>
+                    <Button onClick={handleDelete} className={styles.deleteAccButton}><p className={styles.text}>Удалить аккаунт</p></Button>
                 </Link>
             </div>
 

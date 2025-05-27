@@ -3,6 +3,7 @@
     height: 100%;
     justify-self: center;
     align-items: center;
+    align-self: center;
 }
 
 .profile {
@@ -33,6 +34,10 @@
 
 .userName {
     color:  #003153;
+}
+
+.deleteAccButton{
+    background: rgba(227,38,54, .7);
 }
 
 @media (max-width: 1023px) and (min-width: 768px){

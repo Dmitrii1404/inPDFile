@@ -3,6 +3,7 @@
     height: 100%;
     justify-self: center;
     align-items: center;
+    align-self: center;
 }
 
 .profile {
@@ -17,6 +18,10 @@
     border-style: solid;
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.deleteAccButton{
+    background: rgba(227,38,54, .7);
 }
 
 .link_box {
