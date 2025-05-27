@@ -20,6 +20,7 @@
 
 .logo {
     height: 100%;
+    color: rgba(150,0,24, 1);
 }
 
 .naiming {
@@ -69,7 +70,7 @@
     bottom: 0;
     height: 2px;
     width: 0;
-    background-color: black;
+    background-color: rgba(150,0,24, 1);
     transition: width 0.3s ease;
     border-radius: 1px;
 }
