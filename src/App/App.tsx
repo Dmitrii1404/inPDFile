@@ -12,6 +12,7 @@ import AuthPage from "../pages/AuthPage/AuthPage.tsx";
 import DeleteAccount from "../pages/DeleteAccount/DeleteAccount.tsx";
 import ConfirmCode from "../pages/ConfirmCode/ConfirmCode.tsx";
 import History from "../pages/History/History.tsx";
+import Footer from "../pages/Footer/Footer.tsx";
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
           </div>
           <ToastContainerCustom />
         </div>
+        <Footer />
       </Router>
     </UserProvider>
   )

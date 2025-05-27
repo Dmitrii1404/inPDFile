@@ -84,6 +84,7 @@
     font-size: 24px;
     line-height: 120%;
     text-align: justify;
+
 }
 
 .dragActive {
@@ -120,6 +121,38 @@
     margin: 0;
 }
 
+.file {
+    display: none;
+}
+
+.currentFile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 10px;
+}
+
+.crossButton {
+    height: 24px;
+    width: 24px;
+    background: none;
+    border: none;
+    align-self: center;
+}
+.cross {
+    height: 24px;
+    width: 24px;
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .home {
+        gap: 5px;
+    }
+    .container_upload {
+        margin: 0 20px;
+    }
+}
+
 @media (max-width: 767px) and (min-width: 480px) {
     .home {
         grid-template-columns: 1fr;
@@ -139,35 +172,13 @@
     }
 }
 
-.file {
-    display: none;
-}
-
-.currentFile {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.crossButton {
-    height: 24px;
-    width: 24px;
-    background: none;
-    border: none;
-    align-self: center;
-}
-.cross {
-    height: 24px;
-    width: 24px;
-}
-
 @media (max-width: 479px) {
     .home {
         grid-template-columns: 1fr;
         row-gap: 60px;
     }
     .list {
-        margin: 0;
+        margin: 20px 0;
         padding: 0 20px;
         box-sizing: border-box;
     }

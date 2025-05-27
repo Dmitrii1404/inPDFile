@@ -4,7 +4,7 @@ body {
     font-family: "Nunito", sans-serif;
     margin: 0;
     background: linear-gradient(-45deg, #6495ED, #80DAEB);
-    background-size: 200% 200%;
+    background-size: 300% 300%;
     height: 100vh;
     background-position: 20% 70%;
 }
