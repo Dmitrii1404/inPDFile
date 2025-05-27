@@ -1,0 +1,41 @@
+.button {
+    display: flex;
+    height: 50px;
+    width: 350px;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    line-height: 120%;
+    text-align: justify;
+    background: rgba(248,244,255, 0.8);
+    border: solid rgba(150,0,24, 1);
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition:
+            box-shadow 0.2s ease,
+            transform 0.2s ease,
+            color 0.2s ease;
+}
+
+.button:hover:not(.disabled) {
+    opacity: 0.7;
+    box-shadow: 0 6px 16px rgba(150,0,24, 0.3);
+    transform: translateY(-2px);
+}
+
+.button:active:not(.disabled) {
+    box-shadow: 0 2px 8px rgba(150,0,24, 0.2);
+    transform: translateY(0);
+}
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@media (max-width: 479px) {
+    .button {
+        width: 200px;
+        font-size: 18px;
+    }
+}

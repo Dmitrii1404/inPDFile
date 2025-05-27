@@ -1,55 +1,44 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {UserProvider} from "../context/UserContext.tsx";
 
-import { AuthProvider } from "../context/AuthContext";
-
-import {Bounce, ToastContainer} from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
+import styles from './App.module.css';
 import 'nprogress/nprogress.css';
-import './App.css';
 
-import Header from '../components/header/header';
-import Home from '../pages/home/home.tsx';
-import History from '../pages/history/history.tsx';
-import AuthPage from '../pages/authPage/authPage.tsx';
-import ConfirmCode from '../pages/confirmCode/confirmCode';
-import Profile from '../pages/profile/profile';
-import DeleteAccount from "../pages/deleteAccount/deleteAccount.tsx";
+import ToastContainerCustom from "../components/UI/toast/ToastContainer.tsx";
+import Header from '../pages/Header/Header.tsx';
+import Home from '../pages/Home/Home.tsx';
+import Profile from "../pages/Profile/Profile.tsx";
+import AuthPage from "../pages/AuthPage/AuthPage.tsx";
+import DeleteAccount from "../pages/DeleteAccount/DeleteAccount.tsx";
+import ConfirmCode from "../pages/ConfirmCode/ConfirmCode.tsx";
+import History from "../pages/History/History.tsx";
+import Footer from "../pages/Footer/Footer.tsx";
+import ResultPage from "../pages/ResultPage/ResultPage.tsx";
 
 function App() {
 
-
   return (
-    <AuthProvider>
+    <UserProvider>
       <Router>
-        <div className="App">
+        <div className={styles.app}>
           <Header />
-          <ToastContainer
-            position="bottom-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick={false}
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-            transition={Bounce}
-          />
-          <div className="main-container">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/history" element={<History />} />
-              <Route path="/AuthPage" element={<AuthPage />} />
-              <Route path="/confirmCode" element={<ConfirmCode />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/deleteAccount" element={<DeleteAccount />} />
-            </Routes>
+          <div className={styles.main}>
+              <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/authPage" element={<AuthPage />} />
+                  <Route path="/deleteAccount" element={<DeleteAccount />} />
+                  <Route path="/confirmCode" element={<ConfirmCode />} />
+                  <Route path="/history" element={<History />} />
+                  <Route path="/result" element={<ResultPage />} />
+              </Routes>
           </div>
+          <ToastContainerCustom />
         </div>
+        <Footer />
       </Router>
-    </AuthProvider>
-  );
+    </UserProvider>
+  )
 }
 
-export default App;
+export default App

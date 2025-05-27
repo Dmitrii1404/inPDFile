@@ -1,100 +1,67 @@
-import React, { useState } from 'react';
+import styles from './AuthPage.module.css';
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext.tsx";
-import { useContext } from "react";
-import { toast } from "react-toastify";
-import './authPage.css';
+import { UserContext } from "../../context/UserContext.tsx";
+import AuthForm from "../../components/Widgets/AuthForm/AuthForm.tsx";
 import axios from "axios";
+import { toast } from "react-toastify";
 
-const authPage: React.FC = () => {
-  const navigate = useNavigate();
-  const authContext = useContext(AuthContext);
-  if (!authContext) {
-    return null;
-  }
-  const { setUsername }=authContext;
+function AuthPage() {
+    const userContext = useContext(UserContext);
+    const { addLogin } = userContext;
+    const navigate = useNavigate();
+    const [isLogin, setIsLogin] = useState<boolean>(true);
 
-  const [isLogin, setIsLogin] = useState<boolean>(true);
-  const [user, setUser] = useState<string>('');           // username
-  const [password, setPassword] = useState<string>('');   // password
-
-  const handleAuth = async (event: React.FormEvent) => {
-    event.preventDefault();
-
-    if (user && password) {
-      if (isLogin) {
-        await axios
-            .post('http://localhost:8000/auth/login', {
-              "email": user,
-              "password": password,
+    const handleAuth = async (user: string, password: string) => {
+        if (isLogin) {
+            await axios
+                .post('http://localhost:8000/auth/login', {
+                    "email": user,
+                    "password": password,
+                }, {
+                    withCredentials: true
+                })
+                .then(function (response) {
+                    addLogin(user);
+                    console.log(response);
+                    toast.success('Вы вошли в профиль');
+                    navigate('/profile');
+                })
+                .catch(e => {
+                    toast.error('Неверный логин или пароль');
+                    console.error(e);
+                })
+        } else {
+            await axios.post('http://localhost:8000/auth/register', {
+                "email": user,
+                "password": password,
             }, {
-              withCredentials: true
-        })
-            .then(function (response) {
-              setUsername(user);
-              console.log(response);
-              toast.success('Вы вошли в профиль');
-              navigate('/profile');
-        })
-            .catch(e => {
-              toast.error('Неверный логин или пароль');
-              console.error(e);
-        })
+                withCredentials: true
+            }).then(response => {
+                toast.success('Аккаунт создан');
+                addLogin(user);
+                console.log(response);
+                navigate('/confirmCode', { state: { user } });
+            }).catch(e => {
+                toast.error('Неверный формат данных');
+                console.error(e);
+            })
+        }
+    };
 
-      } else {
-        await axios.post('http://localhost:8000/auth/register', {
-          "email": user,
-          "password": password,
-        }, {
-          withCredentials: true
-        }).then(response => {
-            toast.success('Аккаунт создан');
-          setUsername(user);
-          console.log(response);
-          navigate('/confirmCode', { state : { user }});
-        }).catch(e => {
-            toast.error('Неверный формат данных');
-          console.error(e);
-        })
-      }
-    }
-  };
+    const handleToggleMode = () => {
+        setIsLogin(!isLogin);
+    };
 
-  return (
-    <div className="auth-container">
-      <h1>{isLogin ? 'Вход' : 'Регистрация'}</h1>
-      <form className="auth-form" onSubmit={handleAuth}>
-        <div>
-          <label htmlFor="username">Имя пользователя:</label>
-          <input
-            type="text"
-            id="username"
-            value={user}
-            onChange={(e) => setUser(e.target.value)}
-            required
-          />
+    return (
+        <div className={styles.auth_box}>
+            <AuthForm
+                isLogin={isLogin}
+                onSubmit={handleAuth}
+                onToggleMode={handleToggleMode}
+            />
         </div>
-        <div>
-          <label htmlFor="password">Пароль:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">
-          {isLogin ? 'Войти' : 'Зарегистрироваться'}
-        </button>
-      </form>
-      <button className="toggle-button" onClick={() => setIsLogin(!isLogin)}>
-        {isLogin
-          ? 'Нет аккаунта? Зарегистрируйтесь'
-          : 'Уже есть аккаунт? Войдите'}
-      </button>
-    </div>
-  );
-};
+    );
+}
 
-export default authPage;
+export default AuthPage;

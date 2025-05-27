@@ -1,6 +1,6 @@
 import { OrbitProgress } from "react-loading-indicators";
 
-const loadingOrbitBar: React.FC = () => {
+function LoadingOrbitBar () {
 
     return (
         <>
@@ -9,4 +9,4 @@ const loadingOrbitBar: React.FC = () => {
     );
 }
 
-export default loadingOrbitBar;
+export default LoadingOrbitBar;

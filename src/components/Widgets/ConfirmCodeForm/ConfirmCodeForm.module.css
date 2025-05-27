@@ -1,0 +1,30 @@
+.form {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.input {
+    width: 48px;
+    height: 48px;
+    background: rgba(248,244,255, 1);
+    text-align: center;
+    font-size: 24px;
+    border-color: rgba(150,0,24, .5);
+    border-style: solid;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(150,0,24, .3);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input:focus {
+    border-color: rgba(150,0,24, .8);
+    box-shadow: 0 0 5px rgba(255,255,255, 1);
+}
+
+@media (max-width: 479px)  {
+    .form{
+        gap: 6px;
+    }
+}

@@ -1,47 +1,51 @@
-import React from 'react';
+import styles from './Profile.module.css';
+import {useContext, useEffect} from "react";
+import { UserContext } from "../../context/UserContext.tsx";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext.tsx";
-import { useContext } from "react";
-import './profile.css';
-import axios from "axios";
 import {toast} from "react-toastify";
+import axios from "axios";
+import Button from "../../components/UI/Button/Button.tsx";
+import {Link} from "react-router-dom";
 
-
-const profile: React.FC = () => {
+function Profile () {
     const navigate = useNavigate();
-    const authContext = useContext(AuthContext);
-    if (!authContext) {
-        return null;
-    }
-    const { setUsername }=authContext;
-    const { username }=authContext;
+    const userContext = useContext(UserContext);
+    const { login, addLogin } = userContext;
 
+    useEffect(() => {
+        if (!login) {
+            navigate("/authPage");
+        }
+    });
 
-    const handleLogout = async (event: React.FormEvent) => {
-        event.preventDefault();
-
-        await axios.post('http://localhost:8000/auth/logout', {}, {
+    const handleLogout = () => {
+        axios.post('http://localhost:8000/auth/logout', {}, {
             withCredentials: true
-        }).then((response) => {
+        }).then(() => {
             toast.warning('Вы вышли из аккаунта');
-            setUsername(null);
-            console.log(response);
-            navigate('/authPage');
+            addLogin(undefined);
         }).catch((e) => {
             console.error(e);
         })
     };
 
     return (
-        <div className="auth-container">
-            <div className="dashboard">
-                <h1>Личный кабинет</h1>
-                <p>Добро пожаловать, { username }!</p>
-                <button onClick={handleLogout}>Выйти</button>
-                <button onClick={() => { navigate('/deleteAccount') }}>Удалить аккаунт</button>
+        <div className={styles.profile_box}>
+            <div className={styles.profile}>
+                <h1 className={styles.title}>Личный кабинет</h1>
+                <p className={styles.text}>Добро пожаловать<br/><span className={styles.userName}>{login}</span></p>
+                <div className={styles.link_box}>
+                    <Link to="/authPage" className={styles.link}>
+                        <Button onClick={handleLogout}><p className={styles.text}>Выйти</p></Button>
+                    </Link>
+                    <Link to="/deleteAccount" className={styles.link}>
+                        <Button className={styles.deleteAccButton}><p className={styles.text}>Удалить аккаунт</p></Button>
+                    </Link>
+                </div>
+
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default profile;
+export default Profile;
