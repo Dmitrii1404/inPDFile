@@ -13,6 +13,7 @@ import DeleteAccount from "../pages/DeleteAccount/DeleteAccount.tsx";
 import ConfirmCode from "../pages/ConfirmCode/ConfirmCode.tsx";
 import History from "../pages/History/History.tsx";
 import Footer from "../pages/Footer/Footer.tsx";
+import ResultPage from "../pages/ResultPage/ResultPage.tsx";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
                   <Route path="/deleteAccount" element={<DeleteAccount />} />
                   <Route path="/confirmCode" element={<ConfirmCode />} />
                   <Route path="/history" element={<History />} />
+                  <Route path="/result" element={<ResultPage />} />
               </Routes>
           </div>
           <ToastContainerCustom />

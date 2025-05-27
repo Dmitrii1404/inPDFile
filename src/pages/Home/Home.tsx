@@ -1,6 +1,7 @@
 import styles from './Home.module.css';
 import {useContext, useState} from "react";
 import {toast} from "react-toastify";
+import { useNavigate } from 'react-router-dom';
 import NProgress from 'nprogress';
 import axios from "axios";
 import Button from "../../components/UI/Button/Button.tsx";
@@ -8,12 +9,15 @@ import Button from "../../components/UI/Button/Button.tsx";
 import Cross from "../../assets/Cross.svg?react";
 import {UserContext} from "../../context/UserContext.tsx";
 
+
 function Home () {
     const [file, setFile] = useState<File | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
     const [dragActive, setDragActive] = useState<boolean>(false);
+    const [resultImage, setResultImage] = useState<string | null>(null);
     const userContext = useContext(UserContext);
     const { login } = userContext;
+    const navigate = useNavigate();
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (!login) {
@@ -51,19 +55,21 @@ function Home () {
         setLoading(true);
         NProgress.start();
 
-        await axios.post("http://localhost:8000/pdf/upload", formData, {
+        await axios.post("http://localhost:8000/pdf/analyze", formData, {
             onUploadProgress: (progressEvent) => {
                 if (!progressEvent.total) return;
                 const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total) / 100;
                 NProgress.set(percentage);
-                console.log('progress loading: ' + percentage);
             },
             withCredentials: true,
             headers: { "Content-Type": "multipart/form-data" },
+            responseType: 'blob',
         }).then(response => {
+            const blob = response.data as Blob;
+            const url = URL.createObjectURL(blob);
+            setResultImage(url);
+            navigate('/result', { state: { url } });
             toast.success('Файл загружен');
-            setFile(null);
-            console.log("Файл загружен:", response.data);
         }).catch (e => {
             setFile(null);
             toast.error('Ошибка загрузки');
@@ -108,6 +114,7 @@ function Home () {
 
     const handleDeleteFile = ()=> {
         setFile(null);
+        setResultImage(null);
     };
 
     const classFileDropZone = [
