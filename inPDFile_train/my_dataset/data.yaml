@@ -1,0 +1,21 @@
+names:
+- stamp
+- signature
+nc: 2
+path: my_dataset
+train: images\train
+val: images\val
+test: images\val
+augments:
+  hsv_h: 0.015  # Изменение оттенка
+  hsv_s: 0.7    # Изменение насыщенности
+  hsv_v: 0.4    # Изменение яркости
+  degrees: 10   # Поворот
+  translate: 0.1  # Сдвиг
+  scale: 0.5    # Масштабирование
+  shear: 0.0    # Наклон
+  perspective: 0.0  # Перспектива
+  flipud: 0.0   # Вертикальное отражение
+  fliplr: 0.5   # Горизонтальное отражение (50% вероятность)
+  mosaic: 1.0   # Мозаика (сборка изображения из 4 частей)
+  mixup: 0.0    # Смешивание изображений
