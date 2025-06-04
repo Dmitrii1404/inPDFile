@@ -6,12 +6,12 @@ import 'nprogress/nprogress.css';
 
 import ToastContainerCustom from "../components/UI/toast/ToastContainer.tsx";
 import Header from '../pages/Header/Header.tsx';
-import Home from '../pages/Home/Home.tsx';
-import Profile from "../pages/Profile/Profile.tsx";
-import AuthPage from "../pages/AuthPage/AuthPage.tsx";
-import DeleteAccount from "../pages/DeleteAccount/DeleteAccount.tsx";
-import ConfirmCode from "../pages/ConfirmCode/ConfirmCode.tsx";
-import History from "../pages/History/History.tsx";
+import Home from '../pages/home/home.tsx';
+import Profile from "../pages/profile/profile.tsx";
+import AuthPage from "../pages/authPage/authPage.tsx";
+import DeleteAccount from "../pages/deleteAccount/deleteAccount.tsx";
+import ConfirmCode from "../pages/confirmCode/confirmCode.tsx";
+import History from "../pages/history/history.tsx";
 import Footer from "../pages/Footer/Footer.tsx";
 import ResultPage from "../pages/ResultPage/ResultPage.tsx";
 

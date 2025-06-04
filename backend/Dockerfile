@@ -10,12 +10,12 @@ RUN apt update && \
     apt install -y htop libgl1-mesa-glx libglib2.0-0
 
 
-COPY requirements.txt . 
+COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
 
 
-COPY . .
+COPY .. .
 
 CMD ["gunicorn", "app.main:app", "--workers", "4", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind=0.0.0.0:8000"]
