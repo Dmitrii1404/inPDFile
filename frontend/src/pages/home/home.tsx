@@ -1,13 +1,13 @@
 import styles from './Home.module.css';
-import {useContext, useState} from "react";
-import {toast} from "react-toastify";
+import { useContext, useState } from "react";
+import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
 import NProgress from 'nprogress';
-import axios from "axios";
+import { analyzeAPI } from "../../API";
 import Button from "../../components/UI/Button/Button.tsx";
 // @ts-ignore
 import Cross from "../../assets/Cross.svg?react";
-import {UserContext} from "../../context/UserContext.tsx";
+import { UserContext } from "../../context/UserContext.tsx";
 
 
 function Home () {
@@ -49,33 +49,25 @@ function Home () {
             return;
         }
 
-        const formData = new FormData();
-        formData.append("file", file);
         setLoading(true);
         NProgress.start();
+        const formData = new FormData();
+        formData.append('file', file);
 
-        await axios.post("http://localhost:8000/pdf/analyze", formData, {
-            onUploadProgress: (progressEvent) => {
-                if (!progressEvent.total) return;
-                const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total) / 100;
-                NProgress.set(percentage);
-            },
-            withCredentials: true,
-            headers: { "Content-Type": "multipart/form-data" },
-            responseType: 'blob',
-        }).then(response => {
-            const blob = response.data as Blob;
-            const imageUrl = URL.createObjectURL(blob);
-            navigate('/result', { state: { imageUrl } });
-            toast.success('Файл загружен');
-        }).catch (e => {
-            setFile(null);
-            toast.error('Ошибка загрузки');
-            console.error(e);
-        }).finally(() => {
-            NProgress.done();
-            setLoading(false);
-        })
+        analyzeAPI(formData)
+            .then(response => {
+                const blob = response.data as Blob;
+                const imageUrl = URL.createObjectURL(blob);
+                navigate('/result', { state: { imageUrl } });
+                toast.success('Файл загружен');
+            }).catch (e => {
+                setFile(null);
+                toast.error('Ошибка загрузки');
+                console.error(e);
+            }).finally(() => {
+                NProgress.done();
+                setLoading(false);
+            })
     };
 
     const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {

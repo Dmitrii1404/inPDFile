@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import {UserProvider} from "../context/UserContext.tsx";
+import { UserProvider } from "../context/UserContext.tsx";
 
 import styles from './App.module.css';
 import 'nprogress/nprogress.css';

@@ -1,23 +1,13 @@
 import styles from "./History.module.css";
-import {useEffect, useState} from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
+import { historyAPI } from "../../API";
 import LoadingOrbitBar from "../../components/UI/LoadingOrbitBar/LoadingOrbitBar.tsx";
+import type { responseHistory } from "../../types";
 
-interface FileData {
-    file_name: string;
-    file_size: string;
-    file_path: string;
-    status: string;
-    classification: string;
-    document_type: string;
-    upload_date: string;
-    has_signature: string;
-    has_stamp: string;
-}
 
 function History () {
-    const [files, setFiles] = useState<FileData[]>([]);
-    const [visibleFiles, setVisibleFiles] = useState<FileData[]>([]);
+    const [files, setFiles] = useState<responseHistory[]>([]);
+    const [visibleFiles, setVisibleFiles] = useState<responseHistory[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [loading, setLoading] = useState(false);
 
@@ -25,16 +15,15 @@ function History () {
         const fetchFiles = async () => {
             setLoading(true);
 
-            await axios.get<FileData[]>("http://localhost:8000/pdf/history/", {
-                withCredentials: true,
-            }).then(response => {
-                setFiles(response.data);
-                setVisibleFiles(response.data.slice(0, 10));
-            }).catch (e => {
-                console.error("Ошибка загрузки истории файлов:", e);
-            }).finally(() => {
-                setLoading(false);
-            });
+            historyAPI()
+                .then(response => {
+                    setFiles(response.data);
+                    setVisibleFiles(response.data.slice(0, 10));
+                }).catch (e => {
+                    console.error("Ошибка загрузки истории файлов:", e);
+                }).finally(() => {
+                    setLoading(false);
+                });
         };
 
         fetchFiles();

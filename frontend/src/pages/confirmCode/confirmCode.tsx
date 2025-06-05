@@ -1,9 +1,9 @@
 import styles from './ConfirmCode.module.css';
-import {useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext.tsx";
-import { useNavigate} from "react-router-dom";
-import axios from "axios";
-import {toast} from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { confirmAPI } from "../../API";
+import { toast } from "react-toastify";
 import ConfirmCodeForm from "../../components/Widgets/ConfirmCodeForm/ConfirmCodeForm.tsx";
 
 function ConfirmCode () {
@@ -18,16 +18,14 @@ function ConfirmCode () {
     });
 
     const handleCode = async (code : string) => {
-        await axios.put(`http://localhost:8000/auth/confirm?code=${code}`, {}, {
-            withCredentials : true
-        }).then(function (response){
-            toast.success('Аккаунт подтвержен');
-            console.log(response);
-            navigate('/');
-        }).catch(e => {
-            toast.error('Невеный код');
-            console.error(e);
-        })
+        confirmAPI(code)
+            .then(() => {
+                toast.success('Аккаунт подтвержен');
+                navigate('/');
+            }).catch(e => {
+                toast.error('Неверный код');
+                console.error(e);
+            })
     }
 
     return (

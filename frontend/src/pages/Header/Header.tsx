@@ -1,8 +1,8 @@
-import {UserContext} from "../../context/UserContext.tsx";
-import {useContext, useLayoutEffect} from "react";
-import axios from "axios";
+import { UserContext } from "../../context/UserContext.tsx";
+import { useContext, useLayoutEffect } from "react";
+import { meAPI } from "../../API";
 import styles from './Header.module.css';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 // @ts-ignore
 import Logo from '../../assets/logo.svg?react';
 
@@ -11,13 +11,12 @@ function Header () {
     const {login, addLogin} = userContext;
 
     useLayoutEffect(() => {
-        axios.get('http://localhost:8000/auth/me', {
-            withCredentials: true
-        }).then((response) => {
-            addLogin(response.data.email);
-        }).catch(() => {
-            console.log("Токен авторизации не действителен");
-        });
+        meAPI()
+            .then((response) => {
+                addLogin(response.data.email);
+            }).catch(() => {
+                console.log("Токен авторизации не действителен");
+            });
     }, []);
 
     return (

@@ -1,4 +1,4 @@
-import {createContext, useState} from 'react';
+import { createContext, useState } from 'react';
 
 interface UserContextValue {
     login: string | undefined;

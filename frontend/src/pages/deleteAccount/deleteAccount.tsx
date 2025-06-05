@@ -1,9 +1,9 @@
 import Button from "../../components/UI/Button/Button.tsx";
-import {useContext, useEffect} from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext.tsx";
-import {Link, useNavigate} from "react-router-dom";
-import axios from "axios";
-import {toast} from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
+import { deleteAPI } from "../../API";
+import { toast } from "react-toastify";
 import styles from "./DeleteAccount.module.css";
 
 function DeleteAccount () {
@@ -18,16 +18,14 @@ function DeleteAccount () {
     });
 
     const handleDelete = async () => {
-        await axios.delete('http://localhost:8000/auth/delete', {
-            withCredentials: true
-        }).then((response) => {
-            toast.warning('Аккаунт удален');
-            addLogin(undefined);
-            console.log(response);
-        }).catch((e) => {
-            toast.error('Ошибка');
-            console.error(e);
-        })
+        deleteAPI()
+            .then(() => {
+                toast.warning('Аккаунт удален');
+                addLogin(undefined);
+            }).catch((e) => {
+                toast.error('Ошибка');
+                console.error(e);
+            })
     };
 
 
