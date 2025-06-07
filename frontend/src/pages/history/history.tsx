@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { historyAPI } from "../../API";
 import LoadingOrbitBar from "../../components/UI/LoadingOrbitBar/LoadingOrbitBar.tsx";
 import type { responseHistory } from "../../types";
+import Button from "../../components/UI/Button/Button.tsx";
 
 
 function History () {
@@ -61,9 +62,9 @@ function History () {
                             </ul>
 
                             {visibleFiles.length < files.length && (
-                                <button onClick={loadMoreFiles} className={styles.loadMoreButton}>
+                                <Button onClick={loadMoreFiles}>
                                     Показать ещё
-                                </button>
+                                </Button>
                             )}
                         </div>
                     )}

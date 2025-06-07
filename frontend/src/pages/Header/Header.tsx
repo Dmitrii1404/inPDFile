@@ -3,6 +3,7 @@ import { useContext, useLayoutEffect } from "react";
 import { meAPI } from "../../API";
 import styles from './Header.module.css';
 import { Link } from "react-router-dom";
+import Navigation, { type NavLink } from "../../components/Layouts/Navigation/Navigation.tsx";
 // @ts-ignore
 import Logo from '../../assets/logo.svg?react';
 
@@ -19,6 +20,13 @@ function Header () {
             });
     }, []);
 
+    const links: NavLink[] = [
+        { link: '/',         pageName: 'Главная' },
+        { link: '/history',  pageName: 'История' },
+        { link: login ? '/profile' : '/authPage',
+            pageName: login ? 'Профиль' : 'Войти' }
+    ];
+
     return (
     <header className={styles.header}>
         <div className={styles.logoContainer}>
@@ -30,23 +38,7 @@ function Header () {
                 <p className={styles.description}>мгновенное определение типа документа</p>
             </div>
         </div>
-        <nav className={styles.navigation}>
-            <ul className={styles.nav__list}>
-                <li className={styles.nav__item}>
-                    <Link to="/" className={styles.link}>Главная</Link>
-                </li>
-                <li className={styles.nav__item}>
-                    <Link to="/history" className={styles.link}>История</Link>
-                </li>
-                <li className={styles.nav__item}>
-                    {login ? (
-                        <Link to="/profile" className={styles.link}>Профиль</Link>
-                    ) : (
-                        <Link to="/authPage" className={styles.link}>Войти</Link>
-                    )}
-                </li>
-            </ul>
-        </nav>
+        <Navigation links={links} />
     </header>
     )
 }

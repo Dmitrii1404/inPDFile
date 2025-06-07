@@ -31,20 +31,20 @@ function DeleteAccount () {
 
     return (
         <div className={styles.profile_box}>
-        <div className={styles.profile}>
-            <h1 className={styles.title}>Вы точно хотите удалить аккаунт?</h1>
-            <p className={styles.text}>Это действие необратимо!</p>
-            <div className={styles.link_box}>
-                <Link to="/profile" className={styles.link}>
-                    <Button><p className={styles.text}>Назад</p></Button>
-                </Link>
-                <Link to="/" className={styles.link}>
-                    <Button onClick={handleDelete} className={styles.deleteAccButton}><p className={styles.text}>Удалить аккаунт</p></Button>
-                </Link>
+            <div className={styles.profile}>
+                <h1 className={styles.title}>Вы точно хотите удалить аккаунт?</h1>
+                <p className={styles.text}>Это действие необратимо!</p>
+                <div className={styles.link_box}>
+                    <Link to="/profile" className={styles.link}>
+                        <Button><p className={styles.text}>Назад</p></Button>
+                    </Link>
+                    <Link to="/" className={styles.link}>
+                        <Button onClick={handleDelete} className={styles.deleteAccButton}><p className={styles.text}>Удалить аккаунт</p></Button>
+                    </Link>
+                </div>
             </div>
-
         </div>
-    </div>)
+    )
 }
 
 export default DeleteAccount;
