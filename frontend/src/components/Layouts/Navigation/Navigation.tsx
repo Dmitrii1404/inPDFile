@@ -16,7 +16,7 @@ function Navigation ({ links }: NavigationProps) {
         <nav className={styles.navigation}>
             <ul className={styles.nav__list}>
                 {links.map(({ link, pageName }) => (
-                    <li className={styles.nav__item}>
+                    <li key={link} className={styles.nav__item}>
                         <Link to={link} className={styles.link}>{pageName}</Link>
                     </li>
                 ))}
