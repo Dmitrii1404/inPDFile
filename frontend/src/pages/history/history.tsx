@@ -1,9 +1,9 @@
 import styles from "./History.module.css";
 import { useEffect, useState } from "react";
-import { historyAPI } from "../../API";
-import LoadingOrbitBar from "../../components/UI/LoadingOrbitBar/LoadingOrbitBar.tsx";
+import { historyAPI } from "../../api";
+import LoadingOrbitBar from "../../components/UI/loadingOrbitBar/LoadingOrbitBar.tsx";
 import type { responseHistory } from "../../types";
-import FilesHistory from "../../components/Layouts/FilesHistory/FilesHistory.tsx";
+import FilesHistory from "../../components/layouts/filesHistory/FilesHistory.tsx";
 
 
 function History () {

@@ -1,8 +1,8 @@
-import Button from "../../components/UI/Button/Button.tsx";
+import Button from "../../components/UI/button/Button.tsx";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext.tsx";
 import { Link, useNavigate } from "react-router-dom";
-import { deleteAPI } from "../../API";
+import { deleteAPI } from "../../api";
 import { toast } from "react-toastify";
 import styles from "./DeleteAccount.module.css";
 

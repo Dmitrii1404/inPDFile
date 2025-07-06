@@ -2,8 +2,8 @@ import styles from './AuthPage.module.css';
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext.tsx";
-import AuthForm from "../../components/Widgets/AuthForm/AuthForm.tsx";
-import { loginAPI, registerAPI } from "../../API";
+import AuthForm from "../../components/Widgets/authForm/AuthForm.tsx";
+import { loginAPI, registerAPI } from "../../api";
 import { toast } from "react-toastify";
 
 function AuthPage() {

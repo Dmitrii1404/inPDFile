@@ -3,8 +3,8 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext.tsx";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { logoutAPI } from "../../API";
-import Button from "../../components/UI/Button/Button.tsx";
+import { logoutAPI } from "../../api";
+import Button from "../../components/UI/button/Button.tsx";
 import { Link } from "react-router-dom";
 
 function Profile () {

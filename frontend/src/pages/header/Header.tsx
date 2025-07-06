@@ -1,11 +1,11 @@
 import { UserContext } from "../../context/UserContext.tsx";
 import { useContext, useLayoutEffect } from "react";
-import { meAPI } from "../../API";
+import { meAPI } from "../../api";
 import styles from './Header.module.css';
 import { Link } from "react-router-dom";
-import Navigation, { type NavLink } from "../../components/Layouts/Navigation/Navigation.tsx";
+import Navigation, { type NavLink } from "../../components/layouts/navigation/Navigation.tsx";
 // @ts-ignore
-import Logo from '../../assets/logo.svg?react';
+import Logo from '../../assets/Logo.svg?react';
 
 function Header () {
     const userContext = useContext(UserContext);

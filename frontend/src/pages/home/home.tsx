@@ -3,8 +3,8 @@ import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
 import NProgress from 'nprogress';
-import { analyzeAPI } from "../../API";
-import Button from "../../components/UI/Button/Button.tsx";
+import { analyzeAPI } from "../../api";
+import Button from "../../components/UI/button/Button.tsx";
 // @ts-ignore
 import Cross from "../../assets/Cross.svg?react";
 import { UserContext } from "../../context/UserContext.tsx";

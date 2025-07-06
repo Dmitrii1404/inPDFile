@@ -2,9 +2,9 @@ import styles from './ConfirmCode.module.css';
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext.tsx";
 import { useNavigate } from "react-router-dom";
-import { confirmAPI } from "../../API";
+import { confirmAPI } from "../../api";
 import { toast } from "react-toastify";
-import ConfirmCodeForm from "../../components/Widgets/ConfirmCodeForm/ConfirmCodeForm.tsx";
+import ConfirmCodeForm from "../../components/Widgets/confirmCodeForm/ConfirmCodeForm.tsx";
 
 function ConfirmCode () {
     const navigate = useNavigate();
