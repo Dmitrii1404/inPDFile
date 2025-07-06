@@ -1,11 +1,11 @@
 import styles from './Profile.module.css';
-import {useContext, useEffect} from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext.tsx";
 import { useNavigate } from "react-router-dom";
-import {toast} from "react-toastify";
-import axios from "axios";
-import Button from "../../components/UI/Button/Button.tsx";
-import {Link} from "react-router-dom";
+import { toast } from "react-toastify";
+import { logoutAPI } from "../../api";
+import Button from "../../components/UI/button/Button.tsx";
+import { Link } from "react-router-dom";
 
 function Profile () {
     const navigate = useNavigate();
@@ -19,14 +19,13 @@ function Profile () {
     });
 
     const handleLogout = () => {
-        axios.post('http://localhost:8000/auth/logout', {}, {
-            withCredentials: true
-        }).then(() => {
-            toast.warning('Вы вышли из аккаунта');
-            addLogin(undefined);
-        }).catch((e) => {
-            console.error(e);
-        })
+        logoutAPI()
+            .then(() => {
+                toast.warning('Вы вышли из аккаунта');
+                addLogin(undefined);
+            }).catch((e) => {
+                console.error(e);
+            })
     };
 
     return (

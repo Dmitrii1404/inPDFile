@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './ResultPage.module.css';
-import Button from '../../components/UI/Button/Button';
+import Button from '../../components/UI/button/Button';
 
 type LocationState = {
     imageUrl?: string;

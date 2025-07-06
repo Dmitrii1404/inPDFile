@@ -14,10 +14,10 @@ function Footer () {
                 <p className={styles.description}>Если у вас есть вопросы или предложения, свяжитесь с нами:</p>
                 <ul className={styles.contacts_list}>
                     <li className={styles.contact}>
-                        <p className={styles.description}><strong>Email:</strong> support@inpdfile.com</p>
+                        <p className={styles.description}><strong>Email:</strong> dima1404sidorov@gmail.com</p>
                     </li>
                     <li className={styles.contact}>
-                        <p className={styles.description}><strong>Telegram:</strong> @Darkems</p>
+                        <p className={styles.description}><strong>Telegram:</strong> @disid2145</p>
                     </li>
                     <li className={styles.contact}>
                         <p className={styles.description}><strong>VK:</strong> Пока что нет</p>

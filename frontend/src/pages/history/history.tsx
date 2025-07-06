@@ -1,50 +1,30 @@
 import styles from "./History.module.css";
-import {useEffect, useState} from "react";
-import axios from "axios";
-import LoadingOrbitBar from "../../components/UI/LoadingOrbitBar/LoadingOrbitBar.tsx";
+import { useEffect, useState } from "react";
+import { historyAPI } from "../../api";
+import LoadingOrbitBar from "../../components/UI/loadingOrbitBar/LoadingOrbitBar.tsx";
+import type { responseHistory } from "../../types";
+import FilesHistory from "../../components/layouts/filesHistory/FilesHistory.tsx";
 
-interface FileData {
-    file_name: string;
-    file_size: string;
-    file_path: string;
-    status: string;
-    classification: string;
-    document_type: string;
-    upload_date: string;
-    has_signature: string;
-    has_stamp: string;
-}
 
 function History () {
-    const [files, setFiles] = useState<FileData[]>([]);
-    const [visibleFiles, setVisibleFiles] = useState<FileData[]>([]);
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [files, setFiles] = useState<responseHistory[]>([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchFiles = async () => {
             setLoading(true);
 
-            await axios.get<FileData[]>("http://localhost:8000/pdf/history/", {
-                withCredentials: true,
-            }).then(response => {
-                setFiles(response.data);
-                setVisibleFiles(response.data.slice(0, 10));
-            }).catch (e => {
-                console.error("Ошибка загрузки истории файлов:", e);
-            }).finally(() => {
-                setLoading(false);
-            });
+            historyAPI()
+                .then(response => {
+                    setFiles(response.data);
+                }).catch (e => {
+                    console.error("Ошибка загрузки истории файлов:", e);
+                }).finally(() => {
+                    setLoading(false);
+                });
         };
-
         fetchFiles();
     }, []);
-
-    const loadMoreFiles = () => {
-        const newIndex = currentIndex + 10;
-        setVisibleFiles(files.slice(0, newIndex + 10));
-        setCurrentIndex(newIndex);
-    };
 
     return (
         <div className={styles.historyWrapper}>
@@ -53,30 +33,10 @@ function History () {
                 <LoadingOrbitBar />
             ) : (
                 <div>
-                    {visibleFiles.length === 0 ? (
+                    {files.length === 0 ? (
                         <p className={styles.noFilesText}>У вас нет загруженных файлов</p>
                     ) : (
-                        <div className={styles.scrollContainer}>
-                            <ul className={styles.fileList}>
-                                {visibleFiles.map((file, index) => (
-                                    <li key={index} className={styles.fileItem}>
-                                        <p className={styles.infoText}><strong>{file.file_name}</strong> <span className={styles.size}>({file.file_size})</span></p>
-                                        <p className={styles.infoText}><strong>Дата загрузки:</strong> {file.upload_date}</p>
-                                        <p className={styles.infoText}><strong>Статус:</strong> {file.status}</p>
-                                        <p className={styles.infoText}><strong>Классификация:</strong> {file.classification}</p>
-                                        <p className={styles.infoText}><strong>Тип документа:</strong> {file.document_type}</p>
-                                        <p className={styles.infoText}><strong>Подпись:</strong> {file.has_signature}</p>
-                                        <p className={styles.infoText}><strong>Печать:</strong> {file.has_stamp}</p>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            {visibleFiles.length < files.length && (
-                                <button onClick={loadMoreFiles} className={styles.loadMoreButton}>
-                                    Показать ещё
-                                </button>
-                            )}
-                        </div>
+                        <FilesHistory files={files}/>
                     )}
                 </div>
             )}

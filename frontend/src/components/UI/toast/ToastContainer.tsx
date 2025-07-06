@@ -1,4 +1,4 @@
-import {Bounce, ToastContainer} from "react-toastify";
+import { Bounce, ToastContainer } from "react-toastify";
 
 function ToastContainerCustom () {
     return (

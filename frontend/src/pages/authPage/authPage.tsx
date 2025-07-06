@@ -2,8 +2,8 @@ import styles from './AuthPage.module.css';
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext.tsx";
-import AuthForm from "../../components/Widgets/AuthForm/AuthForm.tsx";
-import axios from "axios";
+import AuthForm from "../../components/Widgets/authForm/AuthForm.tsx";
+import { loginAPI, registerAPI } from "../../api";
 import { toast } from "react-toastify";
 
 function AuthPage() {
@@ -12,18 +12,11 @@ function AuthPage() {
     const navigate = useNavigate();
     const [isLogin, setIsLogin] = useState<boolean>(true);
 
-    const handleAuth = async (user: string, password: string) => {
+    const handleAuth = async (email: string, password: string) => {
         if (isLogin) {
-            await axios
-                .post('http://localhost:8000/auth/login', {
-                    "email": user,
-                    "password": password,
-                }, {
-                    withCredentials: true
-                })
-                .then(function (response) {
-                    addLogin(user);
-                    console.log(response);
+            loginAPI(email, password)
+                .then(() => {
+                    addLogin(email);
                     toast.success('Вы вошли в профиль');
                     navigate('/profile');
                 })
@@ -32,20 +25,15 @@ function AuthPage() {
                     console.error(e);
                 })
         } else {
-            await axios.post('http://localhost:8000/auth/register', {
-                "email": user,
-                "password": password,
-            }, {
-                withCredentials: true
-            }).then(response => {
-                toast.success('Аккаунт создан');
-                addLogin(user);
-                console.log(response);
-                navigate('/confirmCode', { state: { user } });
-            }).catch(e => {
-                toast.error('Неверный формат данных');
-                console.error(e);
-            })
+            registerAPI(email, password)
+                .then(() => {
+                    toast.success('Аккаунт создан');
+                    addLogin(email);
+                    navigate('/confirmCode', { state: { email } });
+                }).catch(e => {
+                    toast.error('Неверный формат данных');
+                    console.error(e);
+                })
         }
     };
 

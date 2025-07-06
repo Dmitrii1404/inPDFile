@@ -1,19 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import {UserProvider} from "../context/UserContext.tsx";
+import { UserProvider } from "../context/UserContext.tsx";
 
 import styles from './App.module.css';
 import 'nprogress/nprogress.css';
 
 import ToastContainerCustom from "../components/UI/toast/ToastContainer.tsx";
-import Header from '../pages/Header/Header.tsx';
+import Header from '../pages/header/Header.tsx';
 import Home from '../pages/home/home.tsx';
 import Profile from "../pages/profile/profile.tsx";
 import AuthPage from "../pages/authPage/authPage.tsx";
 import DeleteAccount from "../pages/deleteAccount/deleteAccount.tsx";
 import ConfirmCode from "../pages/confirmCode/confirmCode.tsx";
 import History from "../pages/history/history.tsx";
-import Footer from "../pages/Footer/Footer.tsx";
-import ResultPage from "../pages/ResultPage/ResultPage.tsx";
+import Footer from "../pages/footer/Footer.tsx";
+import ResultPage from "../pages/resultPage/ResultPage.tsx";
 
 function App() {
 

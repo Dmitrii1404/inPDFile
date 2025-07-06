@@ -13,113 +13,21 @@
     margin-bottom: 20px;
 }
 
-.scrollContainer {
-    width: 100%;
-    max-width: 1350px;
-    height: 70vh;
-    overflow-y: auto;
-    border: 1px solid rgba(150,0,24, .3);
-    border-radius: 10px;
-    padding: 16px;
-}
-
-.fileList {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 16px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.fileItem {
-    background: rgba(248,244,255, 1);
-    border: 1px solid rgba(150,0,24, .8);
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(150,0,24, 0.3);
-    padding: 12px;
-}
-
-.size {
-    color: #888;
-    font-weight: normal;
-}
-
 .noFilesText {
     text-align: center;
     font-style: italic;
     color: #555;
 }
 
-.loadMoreButton {
-    margin-top: 16px;
-    padding: 10px 20px;
-    background-color: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.loadMoreButton:hover {
-    background-color: #357abd;
-}
-
-@media (max-width: 1439px) and (min-width: 1024px) {
-    .scrollContainer {
-        max-width: 900px;
-    }
-    .fileList {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 1023px) and (min-width: 768px) {
-    .scrollContainer {
-        max-width: 450px;
-        height: max-content;
-        border: none;
-    }
-    .fileList {
-        grid-template-columns: repeat(1, 1fr);
-    }
-}
-
-@media (max-width: 767px) and (min-width: 480px) {
-    .scrollContainer {
-        max-width: 350px;
-        height: max-content;
-        border: none;
-    }
-    .fileList {
-        grid-template-columns: repeat(1, 1fr);
-    }
-    .infoText {
-        font-size: 18px;
-    }
-}
-
 @media (max-width: 479px) {
     .historyWrapper{
         padding: 20px 10px 0 10px;
-    }
-    .scrollContainer {
-        max-width: 250px;
-        height: max-content;
-        border: none;
-    }
-    .fileList {
-        grid-template-columns: repeat(1, 1fr);
     }
     .title {
         font-size: 24px;
         text-align: center;
     }
     .noFilesText {
-        font-size: 18px;
-    }
-    .infoText {
         font-size: 18px;
     }
 }
